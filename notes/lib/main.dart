@@ -9,10 +9,21 @@ class Notes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Notes',
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.deepOrange,
+        ),
+      ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.deepOrange,
+          brightness: Brightness.dark,
+        ),
+      ),
+      home: const Homepage(),
     );
   }
 }

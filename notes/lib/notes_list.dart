@@ -14,15 +14,36 @@ class NotesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const BouncingScrollPhysics(
-        parent: AlwaysScrollableScrollPhysics(),
+    return ShaderMask(
+      shaderCallback: (Rect rect) {
+        return const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.purple,
+            Colors.transparent,
+            Colors.transparent,
+            Colors.purple,
+          ],
+          stops: [
+            0.0,
+            0.05,
+            0.95,
+            1.0,
+          ],
+        ).createShader(rect);
+      },
+      blendMode: BlendMode.dstOut,
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        itemBuilder: (context, index) => NoteListTile(
+          note: notes[index],
+          onDelete: onDelete,
+        ),
+        itemCount: notes.length,
       ),
-      itemBuilder: (context, index) => NoteListTile(
-        note: notes[index],
-        onDelete: onDelete,
-      ),
-      itemCount: notes.length,
     );
   }
 }

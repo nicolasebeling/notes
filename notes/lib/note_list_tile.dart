@@ -13,6 +13,12 @@ class NoteListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.only(
+        top: 16,
+        left: 4,
+        right: 4,
+        bottom: 4,
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
       ),
@@ -22,11 +28,9 @@ class NoteListTile extends StatelessWidget {
           child: Text(note),
         ),
         trailing: IconButton(
-          color: Colors.red,
           onPressed: () => onDelete(note),
           splashRadius: 20,
-          splashColor: Colors.red.withOpacity(0.2),
-          icon: const Icon(Icons.delete_rounded),
+          icon: const Icon(Icons.close_rounded),
         ),
       ),
     );
